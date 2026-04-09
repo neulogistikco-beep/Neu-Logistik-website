@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>NEU Logistik | The Architect of Certainty</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #b9c7e4;
+            --secondary: #d6e3ff;
+            --tertiary: #47d6ff;
+            --accent: #22d3ee;
+            --bg-deep: #020a17;
+            --surface-card: rgba(10, 25, 47, 0.7);
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .glass-panel {
+            background: var(--surface-card);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(71, 214, 255, 0.1);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .traceability-grid {
+            background-image:
+                linear-gradient(rgba(71, 214, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(71, 214, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            animation: move-grid 15s linear infinite;
+        }
+
+        @keyframes move-grid {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 50px 50px;
+            }
+        }
+
+        .scan-line {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--tertiary), transparent);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+            z-index: 20;
+            box-shadow: 0 0 15px var(--tertiary);
+        }
+
+        @keyframes scan {
+            0% {
+                top: 0%;
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        .data-stream {
+            position: absolute;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--tertiary), transparent);
+            opacity: 0.2;
+            animation: stream 6s linear infinite;
+        }
+
+        @keyframes stream {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(1000%);
+            }
+        }
+
+        .electric-glow {
+            box-shadow: 0 0 20px rgba(71, 214, 255, 0.3), inset 0 0 10px rgba(71, 214, 255, 0.2);
+        }
+
+        .electric-glow:hover {
+            box-shadow: 0 0 40px rgba(71, 214, 255, 0.6), inset 0 0 15px rgba(71, 214, 255, 0.4);
+            filter: brightness(1.2);
+        }
+
+        .tech-seal {
+            background: radial-gradient(circle, rgba(71, 214, 255, 0.15) 0%, transparent 75%);
+            position: relative;
+        }
+
+        .tech-seal::before {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            border: 1px dashed rgba(71, 214, 255, 0.2);
+            border-radius: 50%;
+            animation: rotate-slow 20s linear infinite;
+        }
+
+        .tech-seal::after {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            border: 1px solid rgba(71, 214, 255, 0.1);
+            border-radius: 50%;
+            animation: rotate-slow 30s linear infinite reverse;
+        }
+
+        @keyframes rotate-slow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .section-flow-line {
+            position: absolute;
+            left: 50%;
+            width: 1px;
+            height: 200px;
+            background: linear-gradient(to bottom, var(--tertiary), transparent);
+            z-index: 30;
+        }
+
+        .precision-asset {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .precision-asset::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(71, 214, 255, 0.05) 3px);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--secondary);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .layer-active {
+            border-color: var(--tertiary) !important;
+            background: rgba(71, 214, 255, 0.1) !important;
+            transform: translateX(1rem);
+        }
+
+        /* Revised Precision Animations */
+        .title-precision {
+            opacity: 0;
+            position: relative;
+        }
+
+        /* Mechanical Snap & Flicker-to-Focus Effect - Fixed to stay visible */
+        .snap-reveal {
+            animation: flickerFocus 0.8s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        @keyframes flickerFocus {
+            0% {
+                opacity: 0;
+                filter: blur(10px);
+                transform: scale(1.05);
+            }
+
+            10% {
+                opacity: 0.5;
+                filter: blur(2px);
+            }
+
+            15% {
+                opacity: 0.2;
+                filter: blur(4px);
+            }
+
+            30% {
+                opacity: 1;
+                filter: blur(0px);
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 1;
+                filter: blur(0px);
+                transform: scale(1);
+            }
+        }
+
+        /* Scanning Reveal Effect - Fixed to stay visible */
+        .scan-reveal-container {
+            position: relative;
+            display: inline-block;
+            overflow: hidden;
+        }
+
+        .scan-reveal-line {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--tertiary);
+            box-shadow: 0 0 15px var(--tertiary);
+            z-index: 20;
+            animation: scanHorizontal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes scanHorizontal {
+            0% {
+                left: 0%;
+                opacity: 1;
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                left: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* Data Validation Resolve Effect - Fixed to only affect the pseudo-element, leaving real text solid */
+        .data-resolve {
+            position: relative;
+        }
+
+        .data-resolve::before {
+            content: attr(data-content);
+            position: absolute;
+            inset: 0;
+            color: var(--tertiary);
+            font-family: monospace;
+            font-size: 0.3em;
+            letter-spacing: 0.5em;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: dataValidate 1.5s steps(4) forwards;
+            pointer-events: none;
+            z-index: 25;
+            background: var(--bg-deep);
+            /* Mask effect during validation */
+        }
+
+        @keyframes dataValidate {
+            0% {
+                opacity: 1;
+                content: "0x4F 0x6E 0x74";
+            }
+
+            25% {
+                content: "0x53 0x79 0x73 0x74";
+            }
+
+            50% {
+                content: "0x41 0x75 0x64 0x69";
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        /* Immutable Seal Effect for CTA */
+        .immutable-seal {
+            animation: sealStomp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.1) forwards;
+            text-shadow: 0 0 0px var(--tertiary);
+        }
+
+        @keyframes sealStomp {
+            0% {
+                transform: scale(1.4);
+                opacity: 0;
+                filter: brightness(2);
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+                filter: brightness(1);
+                text-shadow: 0 0 20px rgba(71, 214, 255, 0.4);
+            }
+        }
+
+        #mouse-spotlight {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(600px circle at var(--x, 50%) var(--y, 50%), rgba(71, 214, 255, 0.05), transparent 80%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .roadmap-card {
+            border-left: 1px solid rgba(71, 214, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .roadmap-card:hover {
+            border-left-color: var(--tertiary);
+            background: rgba(71, 214, 255, 0.03);
+            transform: translateY(-5px);
+        }
+    </style>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#b9c7e4",
+                        "tertiary": "#47d6ff",
+                        "on-tertiary": "#003543",
+                        "surface": "#020a17",
+                        "surface-container": "#0b1626",
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                    },
+                    fontFamily: {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+
+<body class="selection:bg-tertiary selection:text-on-tertiary">
+    <!-- Dynamic Parallax Background -->
+    <div id="parallax-bg" class="fixed inset-0 pointer-events-none z-[5] overflow-hidden opacity-30">
+        <!-- Abstract Tech Element 1: Hexagon & Nodes -->
+        <div class="absolute transition-transform duration-75 ease-out text-tertiary/30 drop-shadow-[0_0_10px_rgba(71,214,255,0.1)]" style="top: 15%; left: 5%; width: 450px; transform: translateY(var(--scroll-y-1, 0)) rotate(var(--scroll-r-1, 0));">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+                <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
+                <polygon points="50,20 80,35 80,65 50,80 20,65 20,35" stroke-dasharray="2 2" />
+                <circle cx="50" cy="50" r="5" fill="currentColor" />
+            </svg>
+            <span class="absolute top-[80%] left-[80%] font-body font-light text-[10px] tracking-widest uppercase opacity-70">DAT.NODE.01</span>
+        </div>
+
+        <!-- Abstract Tech Element 2: Concentric Radar/Scanner -->
+        <div class="absolute transition-transform duration-75 ease-out text-tertiary/20 drop-shadow-[0_0_15px_rgba(71,214,255,0.1)]" style="top: 45%; right: 5%; width: 600px; transform: translateY(var(--scroll-y-2, 0)) rotate(var(--scroll-r-2, 0));">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.6">
+                <circle cx="50" cy="50" r="45" stroke-dasharray="2 4" />
+                <circle cx="50" cy="50" r="30" />
+                <circle cx="50" cy="50" r="15" stroke-dasharray="2 2" />
+                <line x1="0" y1="50" x2="100" y2="50" />
+                <line x1="50" y1="0" x2="50" y2="100" />
+            </svg>
+            <span class="absolute top-[10%] left-[10%] font-body font-light text-[12px] tracking-widest uppercase opacity-70">TRACE_SYS_ACTIVE</span>
+        </div>
+
+        <!-- Abstract Tech Element 3: Routing Architecture -->
+        <div class="absolute transition-transform duration-75 ease-out text-primary/20 drop-shadow-[0_0_8px_rgba(71,214,255,0.1)]" style="top: 75%; left: 10%; width: 650px; transform: translateY(var(--scroll-y-3, 0)) rotate(var(--scroll-r-3, 0));">
+            <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="0.8">
+                <path d="M10,90 L40,50 L70,80 L90,20" stroke-dasharray="3 3"/>
+                <circle cx="10" cy="90" r="2" fill="currentColor"/>
+                <circle cx="40" cy="50" r="2" fill="currentColor"/>
+                <circle cx="70" cy="80" r="2" fill="currentColor"/>
+                <circle cx="90" cy="20" r="2" fill="currentColor"/>
+            </svg>
+        </div>
+
+        <!-- Abstract Tech Element 4: Floating Hex Data -->
+        <div class="absolute transition-transform duration-75 ease-out text-tertiary/30" style="top: 30%; left: 35%; transform: translateY(var(--scroll-y-4, 0)) rotate(var(--scroll-r-4, 0));">
+            <div class="font-headline font-light text-[200px] leading-none opacity-30">[ ]</div>
+            <span class="absolute top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%] font-body font-light text-[18px] tracking-widest text-tertiary opacity-70">0xFF</span>
+        </div>
+
+        <!-- Abstract Tech Element 5: Grid Matrix -->
+        <div class="absolute transition-transform duration-75 ease-out text-tertiary/20" style="top: 80%; right: 15%; width: 400px; transform: translateY(var(--scroll-y-1, 0)) rotate(var(--scroll-r-1, 0));">
+            <svg viewBox="0 0 100 100">
+                <defs>
+                  <pattern id="dotGrid" x="0" y="0" width="10" height="10" patternUnits="userSpaceOnUse">
+                    <circle fill="currentColor" cx="2" cy="2" r="1.5"></circle>
+                  </pattern>
+                </defs>
+                <rect x="0" y="0" width="100" height="100" fill="url(#dotGrid)"></rect>
+            </svg>
+            <span class="absolute bottom-[-10px] left-0 font-body font-light text-[10px] tracking-[0.5em] uppercase opacity-70">MATRIX.DEF</span>
+        </div>
+    </div>
+    <div id="mouse-spotlight" style="--x: 630px; --y: 7908px;"></div>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-[100] bg-surface/80 backdrop-blur-3xl border-b border-white/5">
+        <div class="flex justify-between items-center px-8 lg:px-16 py-6 w-full max-w-[1920px] mx-auto">
+            <div class="text-2xl font-extrabold tracking-tighter text-tertiary font-headline uppercase group cursor-pointer"
+                style="">
+                NEU <span class="text-white font-light group-hover:text-tertiary transition-colors"
+                    style="">Logistik</span>
+            </div>
+            <div class="hidden md:flex gap-12 items-center">
+                <a class="text-[10px] tracking-[0.3em] uppercase font-bold text-white/40 hover:text-tertiary transition-all"
+                    href="#evolution" style="">Milla Cero</a>
+                <a class="text-[10px] tracking-[0.3em] uppercase font-bold text-white/40 hover:text-tertiary transition-all"
+                    href="#evolution" style="">Genealogía</a>
+                <a class="text-[10px] tracking-[0.3em] uppercase font-bold text-white/40 hover:text-tertiary transition-all"
+                    href="#evolution" style="">Fin de Vida</a>
+            </div>
+            <div class="flex gap-10 items-center">
+                <button onclick="openConversionModal()"
+                    class="bg-tertiary text-on-tertiary px-8 py-3 rounded-sm font-headline text-[11px] font-black uppercase tracking-widest electric-glow transition-all active:scale-95"
+                    style="">Solicitar Auditoría</button>
+            </div>
+        </div>
+    </nav>
+    <main class="relative">
+        <div class="fixed inset-0 traceability-grid z-0 opacity-20" id="moving-grid"></div>
+        <!-- Hero Section -->
+        <section class="relative min-h-screen flex items-center px-8 lg:px-16 pt-20 overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <div class="absolute inset-0 bg-gradient-to-b from-surface/20 via-surface to-surface"></div>
+                <div class="scan-line"></div>
+            </div>
+            <div class="relative z-10 w-full max-w-[1920px] mx-auto">
+                <div class="max-w-6xl">
+                    <div class="inline-flex items-center gap-4 px-6 py-2.5 bg-tertiary/5 border border-tertiary/20 text-tertiary font-body text-[9px] font-black tracking-[0.5em] uppercase mb-12 rounded-full"
+                        style="">
+                        <span class="relative flex h-2 w-2">
+                            <span
+                                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-tertiary opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-2 w-2 bg-tertiary"></span>
+                        </span>El problema que nadie Ha Resuelto
+                    </div>
+                    <div class="scan-reveal-container">
+                        <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
+                        <h1 class="text-7xl lg:text-[140px] font-extrabold font-headline leading-[0.85] tracking-[-0.07em] mb-14 text-white title-precision snap-reveal data-resolve"
+                            data-content="PRECISION_001" style="animation-play-state: running;">
+                            Certeza <br> <span class="text-tertiary" style="">Operativa</span><br> <span
+                                class="opacity-30" style="">Tecnológica</span></h1>
+                    </div>
+                    <p class="text-2xl lg:text-3xl text-white/60 max-w-3xl leading-snug font-light mb-16 border-l-2 border-tertiary pl-12"
+                        style="">
+                        Eliminamos el punto ciego y auditamos el ADN de tu logística. Donde otros ven caos, nosotros
+                        instalamos <span
+                            class="text-white font-bold italic underline decoration-tertiary/40 underline-offset-8"
+                            style="">precisión absoluta.</span>
+                    </p>
+                    <div class="flex flex-wrap gap-12 items-center">
+                        <button onclick="openConversionModal()"
+                            class="bg-white text-surface px-16 py-8 font-headline font-black text-xl uppercase tracking-tighter electric-glow transition-all hover:bg-tertiary hover:text-on-tertiary"
+                            style="">
+                            Iniciar Auditoría
+                        </button>
+                        <div
+                            class="flex items-center gap-6 group cursor-pointer border-b border-white/10 pb-2 hover:border-tertiary transition-colors">
+                            <span
+                                class="material-symbols-outlined text-tertiary text-2xl group-hover:rotate-90 transition-transform"
+                                style="">analytics</span>
+                            <span
+                                class="text-[11px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors"
+                                style="">Análisis de Riesgo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-flow-line bottom-0"></div>
+        </section>
+        <!-- The Invisible Problem Section -->
+        <section class="py-56 px-8 lg:px-16 relative z-10 bg-surface">
+            <div class="max-w-[1920px] mx-auto">
+                <div class="flex flex-col lg:flex-row justify-between items-start mb-32 gap-20">
+                    <div class="max-w-4xl">
+                        <p class="text-tertiary font-black tracking-[0.7em] uppercase text-[9px] mb-8" style="">
+                            Vulnerabilidades estructurales</p>
+                        <div class="scan-reveal-container">
+                            <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
+                            <h2 class="text-6xl lg:text-9xl font-headline font-extrabold tracking-[-0.07em] mb-10 uppercase leading-[0.9] title-precision snap-reveal text-white"
+                                style="animation-play-state: running;">
+                                El Punto <span class="text-tertiary italic" style="">Ciego</span> <br><span
+                                    class="opacity-10 text-white" style="">Sistémico</span>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="glass-panel p-10 border-l-4 border-tertiary max-w-md mt-12">
+                        <p class="text-white/70 text-lg font-light leading-relaxed" style="">La incertidumbre en los
+                            nodos de transferencia es el drenaje silencioso de tu rentabilidad... cuesta millones NEU
+                            neutraliza la entropía.</p>
+                    </div>
+                </div>
+                <div
+                    class="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 border border-white/5 rounded-sm overflow-hidden">
+                    <div
+                        class="glass-panel p-16 group relative overflow-hidden transition-all duration-700 hover:bg-tertiary/[0.05]">
+                        <div class="absolute -top-10 -right-10 opacity-5 group-hover:opacity-20 transition-opacity">
+                            <span class="text-[180px] font-headline font-black text-tertiary" style="">01</span>
+                        </div>
+                        <div class="w-24 h-24 mb-14 relative flex items-center justify-center">
+                            <div
+                                class="absolute inset-0 border border-tertiary/20 rotate-45 group-hover:rotate-180 transition-transform duration-1000">
+                            </div>
+                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
+                                style="">grid_view</span>
+                        </div>
+                        <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
+                            style="">Puntos ciegos</h3>
+                        <p class="text-white/50 text-base leading-relaxed mb-12 font-light" style="">Discrepancias
+                            críticas entre lo facturado en origen y lo recibido. La brecha informativa escala en
+                            pérdidas masivas.</p>
+                        <div
+                            class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
+                            <span class="" style="">Ver Diagnóstico</span>
+                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                        </div>
+                    </div>
+                    <div
+                        class="glass-panel p-16 group relative overflow-hidden transition-all duration-700 hover:bg-tertiary/[0.05]">
+                        <div class="absolute -top-10 -right-10 opacity-5 group-hover:opacity-20 transition-opacity">
+                            <span class="text-[180px] font-headline font-black text-tertiary" style="">02</span>
+                        </div>
+                        <div class="w-24 h-24 mb-14 relative flex items-center justify-center">
+                            <div class="absolute inset-2 border border-tertiary/40 rounded-full animate-pulse"></div>
+                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
+                                style="">barcode_scanner</span>
+                        </div>
+                        <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
+                            style="">Entropía</h3>
+                        <p class="text-white/50 text-base leading-relaxed mb-12 font-light" style="">Datos fragmentados.
+                            La desconexión de información entre múltiples agentes impide la gobernanza real de la
+                            cadena.</p>
+                        <div
+                            class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
+                            <span class="" style="">Fijar Control</span>
+                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                        </div>
+                    </div>
+                    <div
+                        class="glass-panel p-16 group relative overflow-hidden transition-all duration-700 hover:bg-tertiary/[0.05]">
+                        <div class="absolute -top-10 -right-10 opacity-5 group-hover:opacity-20 transition-opacity">
+                            <span class="text-[180px] font-headline font-black text-tertiary" style="">03</span>
+                        </div>
+                        <div class="w-24 h-24 mb-14 relative flex items-center justify-center">
+                            <div
+                                class="absolute inset-4 border-2 border-tertiary/30 rounded-lg group-hover:scale-125 transition-transform">
+                            </div>
+                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
+                                style="">gpp_maybe</span>
+                        </div>
+                        <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
+                            style="">Riesgo Legal</h3>
+                        <p class="text-white/50 text-base leading-relaxed mb-12 font-light" style="">Vacíos de
+                            trazabilidad que resultan en incumplimiento normativo y sanciones de alto impacto.</p>
+                        <div
+                            class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
+                            <span class="" style="">Ver Protocolo</span>
+                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-flow-line bottom-0 bg-gradient-to-t from-tertiary to-transparent"></div>
+        </section>
+        <!-- Interactive Three Layers Section -->
+        <section class="py-56 px-8 lg:px-16 relative overflow-hidden bg-surface-container" id="integrity-stack">
+            <div class="absolute inset-0 opacity-5">
+                <div class="data-stream" style="left: 15%; animation-delay: 0s;"></div>
+                <div class="data-stream" style="left: 85%; animation-delay: 2s;"></div>
+            </div>
+            <div class="max-w-[1920px] mx-auto relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-24 items-center">
+                    <div class="lg:col-span-5">
+                        <p class="text-tertiary font-black tracking-[0.7em] uppercase text-[9px] mb-10" style="">Nuestra
+                            arquitectura integral</p>
+                        <div class="scan-reveal-container">
+                            <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
+                            <h2 class="text-6xl lg:text-7xl font-headline font-extrabold tracking-[-0.06em] uppercase mb-16 leading-tight text-white title-precision snap-reveal"
+                                style="animation-play-state: running;">
+                                Capas de <br><span class="text-tertiary" style="">Inmunidad Logística</span>
+                            </h2>
+                        </div>
+                        <div class="space-y-6" id="layer-controls">
+                            <div class="layer-btn p-10 glass-panel border-l-4 border-tertiary group cursor-pointer transition-all hover:translate-x-4"
+                                onmouseenter="switchLayer(0)">
+                                <div class="flex items-center gap-6 mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-white/30 text-3xl transition-colors group-hover:text-tertiary"
+                                        style="">sensors</span>
+                                    <h4 class="font-headline font-extrabold text-3xl tracking-tighter uppercase italic text-white/30 transition-colors group-hover:text-white"
+                                        style="">01. Ecosistema Digital</h4>
+                                </div>
+                                <p class="text-lg font-light leading-relaxed text-white/30 transition-colors group-hover:text-white/60"
+                                    style="">Hardware y sensores integrados desde puerto hasta destino final para un
+                                    flujo de datos 100% verificado.</p>
+                            </div>
+                            <div class="layer-btn p-10 glass-panel border-l-4 border-white/5 group cursor-pointer transition-all hover:translate-x-4"
+                                onmouseenter="switchLayer(1)">
+                                <div class="flex items-center gap-6 mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-white/30 group-hover:text-tertiary transition-colors text-3xl"
+                                        style="">dashboard_customize</span>
+                                    <h4 class="font-headline font-extrabold text-3xl tracking-tighter group-hover:text-white transition-colors uppercase italic text-white/30"
+                                        style="">02. Inteligencia SaaS</h4>
+                                </div>
+                                <p class="text-lg font-light leading-relaxed group-hover:text-white/60 transition-colors text-white/30"
+                                    style="">Visualización de KPIs en tiempo real y alertas predictivas en una interfaz
+                                    de grado industrial.</p>
+                            </div>
+                            <div class="layer-btn p-10 glass-panel border-l-4 border-white/5 group cursor-pointer transition-all hover:translate-x-4 layer-active"
+                                onmouseenter="switchLayer(2)">
+                                <div class="flex items-center gap-6 mb-4">
+                                    <span
+                                        class="material-symbols-outlined text-tertiary group-hover:text-tertiary transition-colors text-3xl"
+                                        style="">fact_check</span>
+                                    <h4 class="font-headline font-extrabold text-3xl tracking-tighter group-hover:text-white transition-colors uppercase italic text-white"
+                                        style="">03. Auditoría Física</h4>
+                                </div>
+                                <p class="text-lg font-light leading-relaxed group-hover:text-white/60 transition-colors text-white/60"
+                                    style="">Validación humana en sitio para inspección de precintos y carga en los
+                                    nodos de mayor riesgo global.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-7">
+                        <div
+                            class="relative precision-asset rounded-sm border border-white/10 shadow-[0_0_100px_rgba(71,214,255,0.15)] aspect-[16/10] bg-[#01050b] overflow-hidden group">
+                            <div class="layer-content absolute inset-0 opacity-0 transition-all duration-1000 ease-in-out transform scale-110"
+                                id="visual-0">
+                                <img alt="Holographic Map"
+                                    class="w-full h-full object-cover mix-blend-screen opacity-60"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfqOdN7oby4m0Z-hMkx_RmlG6R7kQCXzrzIr4pGj_RtOE1IWvc9MQKWcXo3STNHn9jL1M2Pg7JCA-LbmjhvvgW4t45LPwWYx2H8a0qNhDP6K5Q9nYaq3kKgeYgb8_d-JQIk3k6fvcmVhwRfGZ8QDpqhfVd7RKLwMW_-MNzOLQ_S-8xJeMRQ6I7suLloMHCutrD6FSkINfO1lTX4uvrPSC-pa3gWA5d8tSZNxYqSwsSJkt2QIvmnONxCoPhHxdKjWXmop7ibnEn3lx-"
+                                    style="">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-[#01050b] via-transparent to-transparent">
+                                </div>
+                            </div>
+                            <div class="layer-content absolute inset-0 opacity-0 transition-all duration-1000 ease-in-out transform scale-110"
+                                id="visual-1">
+                                <img alt="SaaS Dashboard" class="w-full h-full object-cover mix-blend-screen opacity-50"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZKZ5oVSM_zmtfLScdHDreSB4dgdyVi7wftd3SLJC9zTkzaszSQybvN_r68MtJJI89MwFoLbNun-A0DtK-1cJU7tQViMo-5i-QgekK2-umvoxY_s2HPok961q2BaGaq1M8U3fW8jGWswkSEfgdUpXPM_-IjdRRV4929Gy1ZtnXsYifwAx2lVp-ziSl3TogMGgOi5JpIFy_P6lScFUhlisniQ9qYvGISuEsELFvm0PJzc1OXBCACnOVy8AB119rmSCozUAmGaX545qG"
+                                    style="">
+                            </div>
+                            <div class="layer-content absolute inset-0 opacity-100 transition-all duration-1000 ease-in-out transform scale-100"
+                                id="visual-2">
+                                <img alt="Field Audit"
+                                    class="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
+                                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-H572ih21qWdA6T3zCszaqD7TU9Fitkbjhc57EgjO1943cBvtNo_kTR8r1aouEY2212cNl6ThSQiKl53MxbZT-0XVDgm9Lu9k_ZfLcM-RDjmbLYBA98acAri2sCgaTOOdi102vccQ6xnk8DJcKQXUgtSksuivQ4jkFbz14lGG7IIQTbM2BFKYEhA1iA5u-MzUbnTzRqo5lu7mWh5H3ncYHjRYY-uw0Lj9uXpAfhKeEBoT9Zn1uqDAE3zJrNpkwmx7aQor765YzA3E"
+                                    style="">
+                            </div>
+                            <div class="absolute inset-0 pointer-events-none z-10">
+                                <div
+                                    class="absolute top-0 left-0 w-24 h-24 border-t-2 border-l-2 border-tertiary/40 m-8">
+                                </div>
+                                <div
+                                    class="absolute bottom-0 right-0 w-24 h-24 border-b-2 border-r-2 border-tertiary/40 m-8">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section-flow-line bottom-0"></div>
+        </section>
+        <!-- Credential Strip -->
+        <section class="py-32 bg-surface border-y border-white/5 relative z-10 overflow-hidden">
+            <div class="max-w-[1920px] mx-auto px-8 lg:px-16">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-20 items-center">
+                    <div class="flex gap-10 items-center group cursor-pointer">
+                        <span
+                            class="text-8xl font-headline font-black text-white/10 group-hover:text-tertiary transition-colors duration-500 leading-none tracking-tighter relative"
+                            style="">
+                            40
+                            <span class="absolute -top-4 -right-2 h-3 w-3 bg-tertiary rounded-full animate-ping"></span>
+                        </span>
+                        <div>
+                            <p class="font-headline font-extrabold text-2xl mb-1 uppercase tracking-tighter text-white italic"
+                                style="">Años Asia-Latam</p>
+                            <p class="text-[9px] text-tertiary font-black uppercase tracking-[0.5em]" style="">Expertise
+                                Global</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-10 items-center md:border-l border-white/5 md:pl-20 group cursor-pointer">
+                        <div
+                            class="w-20 h-20 border border-tertiary/20 flex items-center justify-center group-hover:border-tertiary transition-colors group-hover:bg-tertiary/5">
+                            <span
+                                class="material-symbols-outlined text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"
+                                style="">science</span>
+                        </div>
+                        <div>
+                            <p class="font-headline font-extrabold text-2xl mb-1 uppercase tracking-tighter text-white italic"
+                                style="">Validación</p>
+                            <p class="text-[9px] text-tertiary font-black uppercase tracking-[0.5em]" style="">
+                                Laboratorio Certificado</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-10 items-center md:border-l border-white/5 md:pl-20 group cursor-pointer">
+                        <div
+                            class="w-20 h-20 border border-tertiary/20 flex items-center justify-center group-hover:border-tertiary transition-colors group-hover:bg-tertiary/5">
+                            <span
+                                class="material-symbols-outlined text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"
+                                style="">admin_panel_settings</span>
+                        </div>
+                        <div>
+                            <p class="font-headline font-extrabold text-2xl mb-1 uppercase tracking-tighter text-white italic"
+                                style="">Gobernanza 360°</p>
+                            <p class="text-[9px] text-tertiary font-black uppercase tracking-[0.5em]" style="">
+                                Compliance Total</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Massive Impact CTA Section -->
+        <section class="py-72 px-8 lg:px-16 relative overflow-hidden bg-[#01050b]" id="cta-particles">
+            <div class="absolute inset-0 traceability-grid opacity-20" id="cta-grid"></div>
+            <div class="max-w-7xl mx-auto text-center relative z-10">
+                <div class="tech-seal inline-block mb-24 transition-transform hover:scale-110 duration-500">
+                    <div
+                        class="relative w-48 h-48 flex items-center justify-center bg-surface border border-tertiary/30 rounded-full shadow-[0_0_80px_rgba(71,214,255,0.3)] group cursor-pointer">
+                        <span
+                            class="material-symbols-outlined text-8xl text-tertiary drop-shadow-[0_0_20px_rgba(71,214,255,0.8)] font-light group-hover:rotate-[360deg] transition-transform duration-1000"
+                            style="">verified</span>
+                        <div class="absolute inset-0 rounded-full border-2 border-tertiary/20 animate-ping"></div>
+                    </div>
+                </div>
+                <div class="scan-reveal-container">
+                    <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
+                    <h2 class="text-7xl lg:text-[160px] font-headline font-black mb-16 leading-[0.8] uppercase text-white tracking-[-0.08em] italic title-precision immutable-seal data-resolve"
+                        data-content="STATUS_VERIFIED" style="animation-play-state: running;">
+                        ELIMINA LA <br> <span class="opacity-100" style="">INCERTIDUMBRE</span>
+                    </h2>
+                </div>
+                <p class="text-2xl lg:text-3xl text-white/50 max-w-4xl mx-auto mb-24 font-light leading-snug" style="">
+                    Auditamos tu infraestructura hoy para garantizar tu rentabilidad mañana. <br>
+                    <span class="text-tertiary font-bold tracking-widest uppercase text-sm mt-4 block" style="">Sin
+                        puntos ciegos. Sin discrepancias.</span><span
+                        class="text-tertiary font-bold tracking-widest uppercase text-sm mt-4 block" style="">Solo
+                        certeza.</span>
+                </p>
+                <button onclick="openConversionModal()"
+                    class="relative group bg-tertiary text-on-tertiary px-24 py-12 rounded-sm font-headline font-black text-2xl uppercase tracking-tighter transition-all hover:scale-105 active:scale-95 overflow-hidden shadow-[0_0_100px_rgba(71,214,255,0.5)] electric-glow"
+                    style="">
+                    <span class="relative z-10" style="">Iniciar Auditoría ahora</span>
+                    <div
+                        class="absolute inset-0 bg-white/30 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                    </div>
+                </button>
+            </div>
+        </section>
+        <!-- Evolution Roadmap Section -->
+        <section class="py-56 px-8 lg:px-16 relative bg-surface border-t border-white/5 overflow-hidden" id="evolution">
+            <div
+                class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-tertiary/5 to-transparent pointer-events-none">
+            </div>
+            <div class="max-w-[1920px] mx-auto relative z-10">
+                <div class="mb-32">
+                    <p class="text-tertiary font-black tracking-[0.7em] uppercase text-[9px] mb-8" style="">Nuestra
+                        covertura de inicio a fin</p>
+                    <div class="scan-reveal-container">
+                        <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
+                        <h2 class="text-6xl lg:text-8xl font-headline font-extrabold tracking-[-0.06em] uppercase text-white title-precision snap-reveal"
+                            style="animation-play-state: running;">LA Hoja de Ruta <br><span
+                                class="text-tertiary italic" style="">de&nbsp; la Certeza</span>
+                        </h2>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-24">
+                    <div class="roadmap-card p-12 glass-panel group">
+                        <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
+                            style="">01</div>
+                        <div class="flex items-center gap-4 mb-10">
+                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">factory</span>
+                            <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Milla Cero
+                            </h3>
+                        </div>
+                        <p class="text-white/40 group-hover:text-white/70 transition-colors text-lg font-light leading-relaxed mb-12"
+                            style="">
+                            Auditoría en origen. Certificamos la carga y el sellado desde el inicio y durante toda la
+                            cadena de abastecimiento global del activo.
+                        </p>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-tertiary">
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Inspección de Contenedor</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Verificación de SKU</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Sellado Digital NEU</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-card p-12 glass-panel group">
+                        <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
+                            style="">02</div>
+                        <div class="flex items-center gap-4 mb-10">
+                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">account_tree</span>
+                            <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Genealogía
+                            </h3>
+                        </div>
+                        <p class="text-white/40 group-hover:text-white/70 transition-colors text-lg font-light leading-relaxed mb-12"
+                            style="">
+                            Trazabilidad forense del activo. Registramos cada interacción, transferencia de custodia y
+                            condición ambiental.
+                        </p>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-tertiary">
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Registro Inmutable</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Alertas de Desviación</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Auditoría Multi-nodo</li>
+                        </ul>
+                    </div>
+                    <div class="roadmap-card p-12 glass-panel group">
+                        <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
+                            style="">03</div>
+                        <div class="flex items-center gap-4 mb-10">
+                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">flag</span>
+                            <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Fin de Vida
+                            </h3>
+                        </div>
+                        <p class="text-white/40 group-hover:text-white/70 transition-colors text-lg font-light leading-relaxed mb-12"
+                            style="">
+                            Validación final en destino. Comprobamos la integridad del token de integridad y la carga
+                            contra el gemelo digital de origen.
+                        </p>
+                        <ul class="space-y-4 text-[11px] font-bold uppercase tracking-widest text-tertiary">
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Desconsolidación Auditada</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Certificado de Arribo</li>
+                            <li class="flex items-center gap-3" style=""><span
+                                    class="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Análisis de Discrepancia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- Footer -->
+    <footer class="bg-surface border-t border-white/5 pt-32 pb-16 px-8 lg:px-16 relative z-50">
+        <div class="max-w-[1920px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-24 mb-32">
+                <div class="col-span-1">
+                    <div class="text-3xl font-black text-white font-headline mb-10 uppercase tracking-tighter" style="">
+                        NEU <span class="text-tertiary font-light" style="">Logistik</span></div>
+                    <p class="text-white/30 font-body text-[10px] tracking-[0.3em] leading-loose uppercase font-black"
+                        style="">
+                        The Architect of Certainty.<br>
+                        Redefining trust infrastructure in global trade since 1984.
+                    </p>
+                </div>
+                <div>
+                    <p class="text-tertiary font-black text-[10px] uppercase tracking-[0.6em] mb-12" style="">Protocolos
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">Impact Report 2024</a></li>
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">ISO 14001 Standards</a></li>
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">Cybersecurity Protocol</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-tertiary font-black text-[10px] uppercase tracking-[0.6em] mb-12" style="">Empresa
+                    </p>
+                    <ul class="space-y-6">
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">Data Governance</a></li>
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">Global Logistics</a></li>
+                        <li class="" style=""><a
+                                class="text-[10px] uppercase font-bold tracking-[0.3em] text-white/30 hover:text-tertiary transition-colors"
+                                href="#" style="">Legal Compliance</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p class="text-tertiary font-black text-[10px] uppercase tracking-[0.6em] mb-12" style="">Versión
+                        sistema</p>
+                    <div class="bg-white/5 p-8 border border-white/10 rounded-sm">
+                        <div class="flex items-center gap-6 mb-6">
+                            <div
+                                class="w-3 h-3 rounded-full bg-tertiary animate-pulse shadow-[0_0_15px_var(--tertiary)]">
+                            </div>
+                            <span class="text-[11px] font-headline font-black text-white tracking-[0.3em]"
+                                style="">SECURE v4.0.2</span>
+                        </div>
+                        <div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+                            <div class="w-full h-full bg-tertiary/40"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-16 flex flex-col md:flex-row justify-between items-center gap-10">
+                <p class="font-body text-[9px] font-bold tracking-[0.6em] text-white/10 uppercase" style="">© 2024 NEU
+                    Logistik. Engineered for global resilience.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Layer Switching Interaction
+        function switchLayer(index) {
+            const buttons = document.querySelectorAll('.layer-btn');
+            const contents = document.querySelectorAll('.layer-content');
+
+            buttons.forEach((btn, i) => {
+                const h4 = btn.querySelector('h4');
+                const p = btn.querySelector('p');
+                const icon = btn.querySelector('.material-symbols-outlined');
+
+                if (i === index) {
+                    btn.classList.add('layer-active');
+                    h4.classList.remove('text-white/30');
+                    h4.classList.add('text-white');
+                    p.classList.remove('text-white/30');
+                    p.classList.add('text-white/60');
+                    if (icon) icon.classList.replace('text-white/30', 'text-tertiary');
+                } else {
+                    btn.classList.remove('layer-active');
+                    h4.classList.add('text-white/30');
+                    h4.classList.remove('text-white');
+                    p.classList.add('text-white/30');
+                    p.classList.remove('text-white/60');
+                    if (icon) icon.classList.replace('text-tertiary', 'text-white/30');
+                }
+            });
+
+            contents.forEach((content, i) => {
+                if (i === index) {
+                    content.classList.replace('opacity-0', 'opacity-100');
+                    content.classList.replace('scale-110', 'scale-100');
+                } else {
+                    content.classList.replace('opacity-100', 'opacity-0');
+                    content.classList.replace('scale-100', 'scale-110');
+                }
+            });
+        }
+
+        // Mouse Spotlight
+        document.addEventListener('mousemove', (e) => {
+            const spotlight = document.getElementById('mouse-spotlight');
+            spotlight.style.setProperty('--x', `${e.clientX}px`);
+            spotlight.style.setProperty('--y', `${e.clientY}px`);
+        });
+
+        // Precision Reveal on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const title = entry.target.querySelector('.title-precision');
+                    const line = entry.target.querySelector('.scan-reveal-line');
+                    if (title) {
+                        title.classList.remove('opacity-0');
+                        title.style.animationPlayState = 'running';
+                    }
+                    if (line) {
+                        line.style.opacity = '1';
+                        line.style.animationPlayState = 'running';
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.scan-reveal-container').forEach(el => {
+            const title = el.querySelector('.title-precision');
+            const line = el.querySelector('.scan-reveal-line');
+            if (title) title.style.animationPlayState = 'paused';
+            if (line) line.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+    </script>
+    <!-- Conversion Modal -->
+    <div id="conversionModal"
+        class="fixed inset-0 z-[200] hidden items-center justify-center opacity-0 transition-opacity duration-300">
+        <div class="absolute inset-0 bg-[#020a17]/80 backdrop-blur-md" onclick="closeConversionModal()"></div>
+        <div class="relative w-full max-w-lg mx-4 glass-panel border border-tertiary/30 rounded-sm p-10 transform scale-95 transition-transform duration-300"
+            id="modalContent">
+            <button onclick="closeConversionModal()"
+                class="absolute top-6 right-6 text-white/50 hover:text-tertiary transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+
+            <p class="text-tertiary font-black tracking-[0.4em] uppercase text-[9px] mb-4">Asegura tu infraestructura
+            </p>
+            <h3 class="text-3xl font-headline font-extrabold uppercase text-white mb-2">Solicitar Auditoría</h3>
+            <p class="text-white/50 font-light text-sm mb-8">Ingresa tus datos para agendar una sesión inicial enfocada
+                en tus vulnerabilidades clave.</p>
+
+            <form id="leadForm" onsubmit="submitConversionForm(event)" class="space-y-6">
+                <div>
+                    <label
+                        class="block text-[10px] font-bold tracking-widest text-white/50 uppercase mb-2">Nombre
+                        completo</label>
+                    <input type="text" id="leadName" required
+                        class="w-full bg-[#0b1626]/50 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors font-light text-sm"
+                        placeholder="Ej. Carlos Mendoza">
+                </div>
+                <div>
+                    <label
+                        class="block text-[10px] font-bold tracking-widest text-white/50 uppercase mb-2">Correo
+                        corporativo</label>
+                    <input type="email" id="leadEmail" required
+                        class="w-full bg-[#0b1626]/50 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors font-light text-sm"
+                        placeholder="carlos@empresa.com">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold tracking-widest text-white/50 uppercase mb-2">Empresa
+                        (Opcional)</label>
+                    <input type="text" id="leadCompany"
+                        class="w-full bg-[#0b1626]/50 border border-white/10 text-white px-4 py-3 focus:outline-none focus:border-tertiary focus:ring-1 focus:ring-tertiary transition-colors font-light text-sm"
+                        placeholder="Nombre de tu empresa">
+                </div>
+
+                <button id="submitBtn" type="submit"
+                    class="w-full bg-tertiary text-on-tertiary py-4 font-headline font-black text-sm uppercase tracking-widest electric-glow mt-4 flex justify-center items-center gap-2 transition-all hover:scale-[1.02] active:scale-95">
+                    <span>Confirmar Acceso</span> <span class="material-symbols-outlined text-sm hidden"
+                        id="spinner">sync</span>
+                </button>
+                <p id="formMsg" class="text-xs text-center mt-4 hidden"></p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const modal = document.getElementById('conversionModal');
+        const modalContent = document.getElementById('modalContent');
+        const form = document.getElementById('leadForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const spinner = document.getElementById('spinner');
+        const formMsg = document.getElementById('formMsg');
+
+        function openConversionModal() {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            // small delay to allow display:flex to apply before transition
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeConversionModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+                form.reset();
+                formMsg.classList.add('hidden');
+                submitBtn.disabled = false;
+            }, 300);
+        }
+
+        async function submitConversionForm(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('leadName').value;
+            const email = document.getElementById('leadEmail').value;
+            const company = document.getElementById('leadCompany').value;
+
+            submitBtn.disabled = true;
+            spinner.classList.remove('hidden');
+            spinner.classList.add('animate-spin');
+            formMsg.classList.add('hidden');
+
+            try {
+                const response = await fetch('/api/leads', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, email, company })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    formMsg.textContent = '¡Registro exitoso! Nos pondremos en contacto.';
+                    formMsg.className = 'text-[11px] font-bold text-[#47d6ff] text-center mt-4 tracking-widest uppercase';
+                    formMsg.classList.remove('hidden');
+
+                    setTimeout(() => {
+                        closeConversionModal();
+                    }, 3000);
+                } else {
+                    throw new Error(data.error || 'Error al enviar');
+                }
+            } catch (error) {
+                formMsg.textContent = 'Hubo un error de conexión. Intenta de nuevo.';
+                formMsg.className = 'text-[11px] font-bold text-red-500 text-center mt-4 tracking-widest uppercase';
+                formMsg.classList.remove('hidden');
+                submitBtn.disabled = false;
+            } finally {
+                spinner.classList.add('hidden');
+                spinner.classList.remove('animate-spin');
+            }
+        }
+        // Dynamic Parallax Scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const y = window.scrollY;
+                    const bg = document.getElementById('parallax-bg');
+                    if(bg) {
+                        bg.style.setProperty('--scroll-y-1', `${y * -0.15}px`);
+                        bg.style.setProperty('--scroll-y-2', `${y * -0.3}px`);
+                        bg.style.setProperty('--scroll-y-3', `${y * -0.08}px`);
+                        bg.style.setProperty('--scroll-y-4', `${y * -0.4}px`);
+                        
+                        bg.style.setProperty('--scroll-r-1', `${y * 0.05}deg`);
+                        bg.style.setProperty('--scroll-r-2', `${y * -0.02}deg`);
+                        bg.style.setProperty('--scroll-r-3', `${y * 0.08}deg`);
+                        bg.style.setProperty('--scroll-r-4', `${y * -0.04}deg`);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+
+</html>
