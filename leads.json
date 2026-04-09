@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1775755737797",
+    "name": "Test User",
+    "email": "test@example.com",
+    "company": "Test Corp",
+    "createdAt": "2026-04-09T17:28:57.797Z"
+  },
+  {
+    "id": "1775756098491",
+    "name": "Ana Maria",
+    "email": "ana@techlogistics.com",
+    "company": "Tech Logistics",
+    "createdAt": "2026-04-09T17:34:58.491Z"
+  }
+]
