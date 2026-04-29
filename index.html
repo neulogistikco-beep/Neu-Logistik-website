@@ -6,24 +6,24 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>NEU Logistik | The Architect of Certainty</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
     <link
-        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700;9..40,800&family=DM+Mono:wght@300;400;500&display=swap"
         rel="stylesheet">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         html {
             scroll-behavior: smooth;
         }
 
         :root {
-            --primary: #b9c7e4;
-            --secondary: #d6e3ff;
-            --tertiary: #47d6ff;
-            --accent: #22d3ee;
-            --bg-deep: #020a17;
-            --surface-card: rgba(10, 25, 47, 0.7);
+            --primary: #1E2330;
+            --secondary: #E8E5DE;
+            --tertiary: #C9A84C;
+            --accent: #40B59E;
+            --bg-deep: #111318;
+            --surface-card: rgba(30, 35, 48, 0.7);
         }
 
         .material-symbols-outlined {
@@ -353,18 +353,19 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#b9c7e4",
-                        "tertiary": "#47d6ff",
-                        "on-tertiary": "#003543",
-                        "surface": "#020a17",
-                        "surface-container": "#0b1626",
+                        "primary": "#1E2330",
+                        "tertiary": "#C9A84C",
+                        "on-tertiary": "#111318",
+                        "surface": "#111318",
+                        "surface-container": "#1E2330",
                     },
                     borderRadius: {
                         "DEFAULT": "0.25rem",
                     },
                     fontFamily: {
-                        "headline": ["Manrope"],
-                        "body": ["Inter"],
+                        "headline": ["'DM Sans'", "sans-serif"],
+                        "body": ["'DM Sans'", "sans-serif"],
+                        "mono": ["'DM Mono'", "monospace"],
                     }
                 },
             },
@@ -431,10 +432,8 @@
     <!-- Navigation -->
     <nav class="fixed top-0 w-full z-[100] bg-surface/80 backdrop-blur-3xl border-b border-white/5">
         <div class="flex justify-between items-center px-8 lg:px-16 py-6 w-full max-w-[1920px] mx-auto">
-            <div class="text-2xl font-extrabold tracking-tighter text-tertiary font-headline uppercase group cursor-pointer"
-                style="">
-                NEU <span class="text-white font-light group-hover:text-tertiary transition-colors"
-                    style="">Logistik</span>
+            <div class="group cursor-pointer">
+                <img src="neu-logistik_preview_dark.png" alt="NEU Logistik" class="h-10 w-auto" />
             </div>
             <div class="hidden md:flex gap-12 items-center">
                 <a class="text-[10px] tracking-[0.3em] uppercase font-bold text-white/40 hover:text-tertiary transition-all"
@@ -471,7 +470,7 @@
                     </div>
                     <div class="scan-reveal-container">
                         <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
-                        <h1 class="text-7xl lg:text-[140px] font-extrabold font-headline leading-[0.85] tracking-[-0.07em] mb-14 text-white title-precision snap-reveal data-resolve"
+                        <h1 class="text-7xl lg:text-[140px] font-extrabold font-headline leading-none tracking-tight mb-14 text-white title-precision snap-reveal data-resolve"
                             data-content="PRECISION_001" style="animation-play-state: running;">
                             Certeza <br> <span class="text-tertiary" style="">Operativa</span><br> <span
                                 class="opacity-30" style="">Tecnológica</span></h1>
@@ -491,9 +490,7 @@
                         </button>
                         <div
                             class="flex items-center gap-6 group cursor-pointer border-b border-white/10 pb-2 hover:border-tertiary transition-colors">
-                            <span
-                                class="material-symbols-outlined text-tertiary text-2xl group-hover:rotate-90 transition-transform"
-                                style="">analytics</span>
+                            <i data-lucide="bar-chart-2" class="text-tertiary text-2xl group-hover:rotate-90 transition-transform"></i>
                             <span
                                 class="text-[11px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors"
                                 style="">Análisis de Riesgo</span>
@@ -512,7 +509,7 @@
                             Vulnerabilidades estructurales</p>
                         <div class="scan-reveal-container">
                             <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
-                            <h2 class="text-6xl lg:text-9xl font-headline font-extrabold tracking-[-0.07em] mb-10 uppercase leading-[0.9] title-precision snap-reveal text-white"
+                            <h2 class="text-6xl lg:text-9xl font-headline font-extrabold tracking-tight mb-10 uppercase leading-none title-precision snap-reveal text-white"
                                 style="animation-play-state: running;">
                                 El Punto <span class="text-tertiary italic" style="">Ciego</span> <br><span
                                     class="opacity-10 text-white" style="">Sistémico</span>
@@ -536,8 +533,7 @@
                             <div
                                 class="absolute inset-0 border border-tertiary/20 rotate-45 group-hover:rotate-180 transition-transform duration-1000">
                             </div>
-                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
-                                style="">grid_view</span>
+                            <i data-lucide="layout-grid" class="text-tertiary text-5xl font-light"></i>
                         </div>
                         <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
                             style="">Puntos ciegos</h3>
@@ -547,7 +543,7 @@
                         <div
                             class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
                             <span class="" style="">Ver Diagnóstico</span>
-                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                            <i data-lucide="arrow-right" class="text-sm"></i>
                         </div>
                     </div>
                     <div
@@ -557,8 +553,7 @@
                         </div>
                         <div class="w-24 h-24 mb-14 relative flex items-center justify-center">
                             <div class="absolute inset-2 border border-tertiary/40 rounded-full animate-pulse"></div>
-                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
-                                style="">barcode_scanner</span>
+                            <i data-lucide="scan-barcode" class="text-tertiary text-5xl font-light"></i>
                         </div>
                         <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
                             style="">Entropía</h3>
@@ -568,7 +563,7 @@
                         <div
                             class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
                             <span class="" style="">Fijar Control</span>
-                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                            <i data-lucide="arrow-right" class="text-sm"></i>
                         </div>
                     </div>
                     <div
@@ -580,8 +575,7 @@
                             <div
                                 class="absolute inset-4 border-2 border-tertiary/30 rounded-lg group-hover:scale-125 transition-transform">
                             </div>
-                            <span class="material-symbols-outlined text-tertiary text-5xl font-light"
-                                style="">gpp_maybe</span>
+                            <i data-lucide="alert-triangle" class="text-tertiary text-5xl font-light"></i>
                         </div>
                         <h3 class="text-3xl font-headline font-bold mb-8 tracking-tighter uppercase text-white"
                             style="">Riesgo Legal</h3>
@@ -590,7 +584,7 @@
                         <div
                             class="flex items-center gap-4 text-tertiary font-bold text-[10px] tracking-[0.5em] uppercase group-hover:gap-8 transition-all cursor-pointer">
                             <span class="" style="">Ver Protocolo</span>
-                            <span class="material-symbols-outlined text-sm" style="">arrow_right_alt</span>
+                            <i data-lucide="arrow-right" class="text-sm"></i>
                         </div>
                     </div>
                 </div>
@@ -610,7 +604,7 @@
                             arquitectura integral</p>
                         <div class="scan-reveal-container">
                             <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
-                            <h2 class="text-6xl lg:text-7xl font-headline font-extrabold tracking-[-0.06em] uppercase mb-16 leading-tight text-white title-precision snap-reveal"
+                            <h2 class="text-6xl lg:text-7xl font-headline font-extrabold tracking-tight uppercase mb-16 leading-tight text-white title-precision snap-reveal"
                                 style="animation-play-state: running;">
                                 Capas de <br><span class="text-tertiary" style="">Inmunidad Logística</span>
                             </h2>
@@ -619,9 +613,7 @@
                             <div class="layer-btn p-10 glass-panel border-l-4 border-tertiary group cursor-pointer transition-all hover:translate-x-4"
                                 onmouseenter="switchLayer(0)">
                                 <div class="flex items-center gap-6 mb-4">
-                                    <span
-                                        class="material-symbols-outlined text-white/30 text-3xl transition-colors group-hover:text-tertiary"
-                                        style="">sensors</span>
+                                    <i data-lucide="radio" class="text-white/30 text-3xl transition-colors group-hover:text-tertiary"></i>
                                     <h4 class="font-headline font-extrabold text-3xl tracking-tighter uppercase italic text-white/30 transition-colors group-hover:text-white"
                                         style="">01. Ecosistema Digital</h4>
                                 </div>
@@ -632,9 +624,7 @@
                             <div class="layer-btn p-10 glass-panel border-l-4 border-white/5 group cursor-pointer transition-all hover:translate-x-4"
                                 onmouseenter="switchLayer(1)">
                                 <div class="flex items-center gap-6 mb-4">
-                                    <span
-                                        class="material-symbols-outlined text-white/30 group-hover:text-tertiary transition-colors text-3xl"
-                                        style="">dashboard_customize</span>
+                                    <i data-lucide="layout-dashboard" class="text-white/30 group-hover:text-tertiary transition-colors text-3xl"></i>
                                     <h4 class="font-headline font-extrabold text-3xl tracking-tighter group-hover:text-white transition-colors uppercase italic text-white/30"
                                         style="">02. Inteligencia SaaS</h4>
                                 </div>
@@ -645,9 +635,7 @@
                             <div class="layer-btn p-10 glass-panel border-l-4 border-white/5 group cursor-pointer transition-all hover:translate-x-4 layer-active"
                                 onmouseenter="switchLayer(2)">
                                 <div class="flex items-center gap-6 mb-4">
-                                    <span
-                                        class="material-symbols-outlined text-tertiary group-hover:text-tertiary transition-colors text-3xl"
-                                        style="">fact_check</span>
+                                    <i data-lucide="check-circle" class="text-tertiary group-hover:text-tertiary transition-colors text-3xl"></i>
                                     <h4 class="font-headline font-extrabold text-3xl tracking-tighter group-hover:text-white transition-colors uppercase italic text-white"
                                         style="">03. Auditoría Física</h4>
                                 </div>
@@ -718,9 +706,7 @@
                     <div class="flex gap-10 items-center md:border-l border-white/5 md:pl-20 group cursor-pointer">
                         <div
                             class="w-20 h-20 border border-tertiary/20 flex items-center justify-center group-hover:border-tertiary transition-colors group-hover:bg-tertiary/5">
-                            <span
-                                class="material-symbols-outlined text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"
-                                style="">science</span>
+                            <i data-lucide="flask-conical" class="text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"></i>
                         </div>
                         <div>
                             <p class="font-headline font-extrabold text-2xl mb-1 uppercase tracking-tighter text-white italic"
@@ -732,9 +718,7 @@
                     <div class="flex gap-10 items-center md:border-l border-white/5 md:pl-20 group cursor-pointer">
                         <div
                             class="w-20 h-20 border border-tertiary/20 flex items-center justify-center group-hover:border-tertiary transition-colors group-hover:bg-tertiary/5">
-                            <span
-                                class="material-symbols-outlined text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"
-                                style="">admin_panel_settings</span>
+                            <i data-lucide="shield-check" class="text-5xl text-tertiary font-light group-hover:scale-110 transition-transform"></i>
                         </div>
                         <div>
                             <p class="font-headline font-extrabold text-2xl mb-1 uppercase tracking-tighter text-white italic"
@@ -753,15 +737,13 @@
                 <div class="tech-seal inline-block mb-24 transition-transform hover:scale-110 duration-500">
                     <div
                         class="relative w-48 h-48 flex items-center justify-center bg-surface border border-tertiary/30 rounded-full shadow-[0_0_80px_rgba(71,214,255,0.3)] group cursor-pointer">
-                        <span
-                            class="material-symbols-outlined text-8xl text-tertiary drop-shadow-[0_0_20px_rgba(71,214,255,0.8)] font-light group-hover:rotate-[360deg] transition-transform duration-1000"
-                            style="">verified</span>
+                        <i data-lucide="badge-check" class="text-8xl text-tertiary drop-shadow-[0_0_20px_rgba(71,214,255,0.8)] font-light group-hover:rotate-[360deg] transition-transform duration-1000"></i>
                         <div class="absolute inset-0 rounded-full border-2 border-tertiary/20 animate-ping"></div>
                     </div>
                 </div>
                 <div class="scan-reveal-container">
                     <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
-                    <h2 class="text-7xl lg:text-[160px] font-headline font-black mb-16 leading-[0.8] uppercase text-white tracking-[-0.08em] italic title-precision immutable-seal data-resolve"
+                    <h2 class="text-7xl lg:text-[160px] font-headline font-black mb-16 leading-none uppercase text-white tracking-tight italic title-precision immutable-seal data-resolve pr-8"
                         data-content="STATUS_VERIFIED" style="animation-play-state: running;">
                         ELIMINA LA <br> <span class="opacity-100" style="">INCERTIDUMBRE</span>
                     </h2>
@@ -794,7 +776,7 @@
                         covertura de inicio a fin</p>
                     <div class="scan-reveal-container">
                         <div class="scan-reveal-line" style="animation-play-state: running; opacity: 1;"></div>
-                        <h2 class="text-6xl lg:text-8xl font-headline font-extrabold tracking-[-0.06em] uppercase text-white title-precision snap-reveal"
+                        <h2 class="text-6xl lg:text-8xl font-headline font-extrabold tracking-tight uppercase text-white title-precision snap-reveal pr-8"
                             style="animation-play-state: running;">LA Hoja de Ruta <br><span
                                 class="text-tertiary italic" style="">de&nbsp; la Certeza</span>
                         </h2>
@@ -805,7 +787,7 @@
                         <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
                             style="">01</div>
                         <div class="flex items-center gap-4 mb-10">
-                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">factory</span>
+                            <i data-lucide="factory" class="text-tertiary text-4xl"></i>
                             <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Milla Cero
                             </h3>
                         </div>
@@ -827,7 +809,7 @@
                         <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
                             style="">02</div>
                         <div class="flex items-center gap-4 mb-10">
-                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">account_tree</span>
+                            <i data-lucide="account-tree" class="text-tertiary text-4xl"></i>
                             <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Genealogía
                             </h3>
                         </div>
@@ -849,7 +831,7 @@
                         <div class="text-tertiary font-headline font-black text-6xl mb-8 opacity-20 group-hover:opacity-100 transition-opacity"
                             style="">03</div>
                         <div class="flex items-center gap-4 mb-10">
-                            <span class="material-symbols-outlined text-tertiary text-4xl" style="">flag</span>
+                            <i data-lucide="flag" class="text-tertiary text-4xl"></i>
                             <h3 class="text-3xl font-headline font-extrabold uppercase text-white" style="">Fin de Vida
                             </h3>
                         </div>
@@ -1017,7 +999,7 @@
             id="modalContent">
             <button onclick="closeConversionModal()"
                 class="absolute top-6 right-6 text-white/50 hover:text-tertiary transition-colors">
-                <span class="material-symbols-outlined">close</span>
+                <i data-lucide="close" class=""></i>
             </button>
 
             <p class="text-tertiary font-black tracking-[0.4em] uppercase text-[9px] mb-4">Asegura tu infraestructura
@@ -1053,8 +1035,7 @@
 
                 <button id="submitBtn" type="submit"
                     class="w-full bg-tertiary text-on-tertiary py-4 font-headline font-black text-sm uppercase tracking-widest electric-glow mt-4 flex justify-center items-center gap-2 transition-all hover:scale-[1.02] active:scale-95">
-                    <span>Confirmar Acceso</span> <span class="material-symbols-outlined text-sm hidden"
-                        id="spinner">sync</span>
+                    <span>Confirmar Acceso</span> <i data-lucide="sync" class="text-sm hidden"></i>
                 </button>
                 <p id="formMsg" class="text-xs text-center mt-4 hidden"></p>
             </form>
@@ -1159,6 +1140,7 @@
             }
         });
     </script>
+    <script>lucide.createIcons();</script>
 </body>
 
 </html>
